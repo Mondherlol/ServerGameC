@@ -2,20 +2,6 @@
 const Player = require('../models/player');
 const fs = require('fs');
 
-const players = {};
-
-function joinGame(socket, playerName) {
-  players[socket.id] = new Player(socket.id, playerName);
-  return players[socket.id];
-}
-
-function leaveGame(socket) {
-  if (players[socket.id]) {
-    const playerName = players[socket.id].name;
-    delete players[socket.id];
-    return { id: socket.id, name: playerName };
-  }
-}
 function getScores() {
     // Charge les données depuis score.json
     const scoreData = fs.readFileSync('./data/score.json');
@@ -52,10 +38,6 @@ function getScores() {
     return sortedScores;
   }
 module.exports = {
-  joinGame,
-  leaveGame,
-  getPlayers: () => players,
   getScores,
   addScore
-
 };

@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require("morgan");
 const cors = require("cors");
 const { Server } = require("socket.io");
+const scoreRoute = require('./routes/scoresRoute');
 
 
 const http = require('http');
@@ -17,6 +18,7 @@ app.use(cors({
 
 app.use(morgan("dev"));
 
+app.use('/scores/', scoreRoute);
 
 
 // Création du serveur HTTP
@@ -61,12 +63,14 @@ io.on('connection', (socket) => {
 
 // Route ping pour effectuer un test
 app.get('/ping', (req, res) => {
-    res.status(200).send('Pong');
-  });
+  res.status(200).send('Pong');
+});
 
 app.get('/players',(req,res) =>{
-    res.status(200).send(players);
+  res.status(200).send(players);
 })
+
 server.listen(port, () => {
   console.log(`Serveur en écoute sur le port ${port}`);
 });
+
