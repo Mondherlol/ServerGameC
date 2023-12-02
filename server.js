@@ -11,7 +11,7 @@ const socketIo = require('socket.io');
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000', // Remplacez par l'URL de votre application React
+    origin: 'http://localhost:3002', // Remplacez par l'URL de votre application React
     credentials: true,
   }));
 
