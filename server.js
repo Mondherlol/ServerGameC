@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { Server } = require("socket.io");
 const scoreRoute = require('./routes/scoresRoute');
+const gamesRoute = require('./routes/gameRoute');
 
 
 const http = require('http');
@@ -20,6 +21,8 @@ app.use(cors({
 app.use(morgan("dev"));
 
 app.use('/scores/', scoreRoute);
+app.use('/games/', gamesRoute);
+
 
 
 // Création du serveur HTTP
@@ -44,11 +47,11 @@ const players = {};
 io.on('connection', (socket) => {
   console.log('Nouvelle connexion :', socket.id);
 
-  socket.on('join-game', (playerName) => {
+  socket.on('join-game', (playerName,gammeCode) => {
     players[socket.id] = playerName;
-    io.emit('player-joined', { id: socket.id, name: playerName });
+    io.emit('player-joined', { id: socket.id, name: playerName ,code:gammeCode});
 
-    console.log(`${playerName} a rejoint la partie.`);
+    console.log(`${playerName} a rejoint la partie ${gammeCode}`);
   });
 
   socket.on('disconnect', () => {
