@@ -35,6 +35,7 @@ const io = new Server(server, {
 });
 
 
+
 const port = process.env.PORT || 3001;
 
 
@@ -66,9 +67,10 @@ io.on('connection', (socket) => {
 
 // Route ping pour effectuer un test
 app.get('/ping', (req, res) => {
-  res.status(200).send('Pong');
+  setTimeout(() => {
+    res.status(200).send('Pong');
+  }, 1000); // Délai d'une seconde
 });
-
 app.get('/players',(req,res) =>{
   res.status(200).send(players);
 })
