@@ -12,9 +12,6 @@ const app = express();
 
 app.use(cors({
     origin: '*',
-
-
-     // Remplacez par l'URL de votre application React
     credentials: true,
   }));
 
@@ -36,17 +33,20 @@ const io = new Server(server, {
 });
 
 
-
 const port = process.env.PORT || 3001;
 
 
 // Liste des joueurs
 const players = {};
 
-
-
 io.on('connection', (socket) => {
   console.log('Nouvelle connexion :', socket.id);
+
+
+    // Ajoutez cette partie pour gérer les erreurs
+    socket.on('error', (error) => {
+      console.error('Erreur de connexion:', error);
+    });
 
   socket.on('join-game', (playerName) => {
     players[socket.id] = playerName;
@@ -68,9 +68,7 @@ io.on('connection', (socket) => {
 
 // Route ping pour effectuer un test
 app.get('/ping', (req, res) => {
-  setTimeout(() => {
     res.status(200).send('Pong');
-  }, 1000); // Délai d'une seconde
 });
 
 app.get('/players',(req,res) =>{

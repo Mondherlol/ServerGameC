@@ -1,11 +1,11 @@
 // controllers/playerController.js
-const Player = require('../models/player');
+const Player = require('../models/score');
 const fs = require('fs');
 
 function getScores() {
     // Charge les données depuis score.json
     const scoreData = fs.readFileSync('./data/score.json');
-    const scores = JSON.parse(scoreData).players;
+    const scores = JSON.parse(scoreData).scores;
   
     // Trie les scores par ordre décroissant
     const sortedScores = scores.sort((a, b) => b.score - a.score);
@@ -13,30 +13,32 @@ function getScores() {
     return sortedScores;
   }
 
-  function addScore(playerId,playerName, newScore) {
-    const scoreData = fs.readFileSync('./data/score.json');
-    const scores = JSON.parse(scoreData).players;
+
+  function addScore(playerName, newScore) {
+      // Lire les données du fichier score.json
+      const scoreData = fs.readFileSync('./data/score.json');
+      const scores = JSON.parse(scoreData).scores;
   
-    const playerIndex = scores.findIndex((player) => player.id === playerId);
+      // Trouver le dernier ID dans le fichier JSON
+      const lastPlayer = scores[scores.length - 1];
+      const lastPlayerId = lastPlayer ? lastPlayer.id : 0;
   
-    if (playerIndex !== -1) {
-      // Le joueur existe, vérifiez si le nouveau score est supérieur
-      if (newScore > scores[playerIndex].score) {
-        scores[playerIndex].score = newScore;
-      }
-    } else {
-      // Le joueur n'existe pas, ajoutez-le
-      scores.push({ id: playerId,name:playerName, score: newScore });
+      // Incrémenter le playerId
+      const playerId = lastPlayerId + 1;
+  
+      // Obtenir la date et l'heure actuelles
+      const currentDate = new Date();
+      const dateTimeString = currentDate.toISOString(); // Format ISO
+  
+      // Ajouter le nouveau score avec le nouvel ID et la date/heure
+      scores.push({ id: playerId, name: playerName, score: newScore, dateTime: dateTimeString });
+  
+      // Triez les scores par ordre décroissant
+      const sortedScores = scores.sort((a, b) => b.score - a.score);
+  
+      // Mettez à jour le fichier score.json avec les nouveaux scores
+      fs.writeFileSync('./data/score.json', JSON.stringify({ scores: sortedScores }, null, 2));
     }
-  
-    // Triez les scores par ordre décroissant
-    const sortedScores = scores.sort((a, b) => b.score - a.score);
-  
-    // Mettez à jour le fichier score.json avec les nouveaux scores
-    fs.writeFileSync('./data/score.json', JSON.stringify({ players: sortedScores }));
-  
-    return sortedScores;
-  }
 module.exports = {
   getScores,
   addScore

@@ -15,7 +15,7 @@ router.get('/code', (req, res) => {
   });
   router.get('/generercode', (req, res) => {
     const  Code = generateUniqueCode();
-    res.status(200).json(Code);
+    res.status(200).send(Code);
   });
   router.post('/:code/:playerName/:playerId', (req, res) => {
     const {code,playerName,playerId } = req.params;
