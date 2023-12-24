@@ -2,18 +2,21 @@
 const Player = require('../models/score');
 const fs = require('fs');
 
-function getScores() {
-    // Charge les données depuis score.json
-    const scoreData = fs.readFileSync('./data/score.json');
-    const scores = JSON.parse(scoreData).scores;
-  
-    // Trie les scores par ordre décroissant
-    const sortedScores = scores.sort((a, b) => b.score - a.score);
-  
-    return sortedScores;
+function getScores(limit) {
+  // Charge les données depuis score.json
+  const scoreData = fs.readFileSync('./data/score.json');
+  const scores = JSON.parse(scoreData).scores;
+
+  // Trie les scores par ordre décroissant
+  const sortedScores = scores.sort((a, b) => b.score - a.score);
+
+  // Si la limite est spécifiée, retourne seulement le nombre d'éléments demandé
+  if (limit) {
+      return sortedScores.slice(0, limit);
   }
 
-
+  return sortedScores;
+}
   function addScore(playerName, newScore) {
       // Lire les données du fichier score.json
       const scoreData = fs.readFileSync('./data/score.json');

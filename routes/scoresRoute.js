@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const { joinGame, leaveGame, getPlayers,getScores,addScore} = require('../controllers/playerController');
 
-
-
 router.get('/', (req, res) => {
-    const scores = getScores();
-    res.status(200).json(scores);
-  });
+  const limit = req.query.limit; // Récupère la valeur du paramètre "limit" depuis l'URL
+  const scores = getScores(limit);
+  res.status(200).json(scores);
+});
+
 
   router.post('/:playerName/:newScore', (req, res) => {
     const { playerName, newScore } = req.params;
