@@ -17,7 +17,7 @@ router.get('/code', (req, res) => {
 //generer code pour les games cette fonction est utiliser par le c lorsque il lance une jeux il lui donne un code unique 
   router.get('/generercode', (req, res) => {
     const  Code = generateUniqueCode();
-    res.status(200).json(Code);
+    res.status(200).send(Code);
   });
 //lorsque c cree une jeux avec un code on va le stoqué dans la base
   router.post('/:code/:playerName/:playerId', (req, res) => {

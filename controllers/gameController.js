@@ -91,9 +91,9 @@ function generateUniqueCode() {
     const games = JSON.parse(gamesData).games;
 
     do {
-        // Generate an 8-character random code
+        // Generate an 4-character random code
         code = '';
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 4; i++) {
             const randomIndex = Math.floor(Math.random() * characters.length);
             code += characters[randomIndex];
         }
