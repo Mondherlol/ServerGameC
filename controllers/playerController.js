@@ -1,5 +1,5 @@
 // controllers/playerController.js
-const Player = require('../models/player');
+const Player = require('../models/score');
 const fs = require('fs');
 
 function getScores() {

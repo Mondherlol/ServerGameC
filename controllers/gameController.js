@@ -29,7 +29,8 @@ function addGame(code, playerName, playerId) {
         console.log("game code existe deja !")
     } else {
         // Le game n'existe pas, ajoutez-le
-        games.push({ code: code, score: 0, playerName: playerName, playerId: playerId, nbVisiteurs: 0 });
+        games.push({ code: code, score: 0, playerName: playerName, playerId: playerId, visitors: [] });
+
     }
 
 
@@ -61,6 +62,27 @@ function deleteGame(code) {
 
 
 }
+function addVisitor(code,visitorName){
+    const gamesData = fs.readFileSync('./data/game.json');
+    const games = JSON.parse(gamesData).games;
+    const gameIndex = games.findIndex((game) => game.code === code);
+    if (gameIndex !== -1) {
+        // Le jeu existe, ajoutez le visiteur
+        console.log('game exist')
+        console.log('game index',games[gameIndex].visitors)
+        games[gameIndex].addVisitor(visitorName);
+        console.log('games',games.visitors)
+    
+        // Mise à jour du fichier game.json avec les nouveaux jeux
+        fs.writeFileSync('./data/game.json', JSON.stringify({ games: games }));
+    
+        return `Visitor added successfully.`
+      } else {
+        return `success: false, message: 'Game not found.' `
+      }
+
+}
+
 function generateUniqueCode() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoprstuvwxyz0123456789';
     let code;
@@ -92,5 +114,6 @@ module.exports = {
     addGame,
     getGames,
     deleteGame,
-    generateUniqueCode
+    generateUniqueCode,
+    addVisitor
 };
