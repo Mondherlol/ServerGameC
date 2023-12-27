@@ -17,6 +17,7 @@ function getScores(limit) {
 
   return sortedScores;
 }
+
   function addScore(playerName, newScore) {
       // Lire les données du fichier score.json
       const scoreData = fs.readFileSync('./data/score.json');
