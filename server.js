@@ -4,6 +4,7 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 const scoreRoute = require('./routes/scoresRoute');
 const gameRoute = require('./routes/gameRoute');
+const {  addGame, games}= require('./controllers/gameController');
 
 const http = require('http');
 const socketIo = require('socket.io');
@@ -15,11 +16,10 @@ app.use(cors({
     credentials: true,
 }));
 
-
 app.use(morgan("dev"));
 
 app.use('/scores/', scoreRoute);
-app.use('/game/', gameRoute);
+app.use('/games/', gameRoute);
 
 
 // Création du serveur HTTP
@@ -38,38 +38,42 @@ const port = process.env.PORT || 3001;
 
 // Liste des joueurs
 const players = {};
-const games = {};
 
 io.on('connection', (socket) => {
   console.log('Nouvelle connexion :', socket.id);
 
 
-    // Ajoutez cette partie pour gérer les erreurs
+    // Gérer les erreurs
     socket.on('error', (error) => {
       console.error('Erreur de connexion:', error);
     });
 
-
-  socket.on('join-game', (playerName) => {
+// Quand un visiteur veut rejoindre une partie
+  socket.on('join-game', (playerName,gameCode) => {
     players[socket.id] = playerName;
     io.emit('player-joined', { id: socket.id, name: playerName });
     console.log(`${playerName} a rejoint la partie.`);
   });
 
-  socket.on('create-game', (codeId) => {
-
+  socket.on('create-game', (playerName) => {
+    gameCode = addGame(playerName, socket.id);
+    console.log(playerName + " a creer une partie. Code Partie = "+gameCode);
+    socket.emit('game-code', {gameCode});
   })
 
   socket.on('disconnect', () => {
+    console.log(socket.id + " a fermé la connexion.");
 
-    if (players[socket.id]) {
-      const playerName = players[socket.id];
-      delete players[socket.id];
-      io.emit('player-left', { id: socket.id, name: playerName });
+    
+    // Vérifier si le socket avait créé une partie
+    const gameToDelete = Object.values(games).find((game) => game.playerSocketId === socket.id);
 
-      console.log(`${playerName} a quitté la partie.`);
+    if (gameToDelete) {
+      // Supprimer la partie du tableau games
+      delete games[gameToDelete.gameCode];
+      console.log(`Partie ${gameToDelete.gameCode} supprimée car le joueur ${gameToDelete.playerName} a fermé la connexion.`);
     }
-    console.log(socket.id + " a quitte la connexion.");
+
   });
 });
 
@@ -80,7 +84,7 @@ app.get('/ping', (req, res) => {
 
 app.get('/players',(req,res) =>{
   res.status(200).send(players);
-})
+});
 
 
 // Route de test pour envoyer un message à tous les sockets
@@ -97,4 +101,6 @@ app.get('/send-message', (req, res) => {
 server.listen(port, () => {
   console.log(`Serveur en écoute sur le port ${port}`);
 });
+
+
 

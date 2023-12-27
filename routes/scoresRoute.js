@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { joinGame, leaveGame, getPlayers,getScores,addScore} = require('../controllers/playerController');
+const { getScores,addScore} = require('../controllers/playerController');
 
 router.get('/', (req, res) => {
   const limit = req.query.limit; // Récupère la valeur du paramètre "limit" depuis l'URL
@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 
-  router.post('/:playerName/:newScore', (req, res) => {
+router.post('/:playerName/:newScore', (req, res) => {
     const { playerName, newScore } = req.params;
 
     // Vérifier si le score est un nombre valide
@@ -24,4 +24,5 @@ router.get('/', (req, res) => {
     // Renvoyer une réponse avec le code approprié et le tableau de scores
     res.status(201).json({ message: 'Score ajouté avec succès.' });
   });
+  
 module.exports = router;

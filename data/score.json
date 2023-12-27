@@ -68,6 +68,12 @@
     },
     {
       "id": 2,
+      "name": "SHEYMA",
+      "score": 113,
+      "dateTime": "2023-12-27T16:12:48.637Z"
+    },
+    {
+      "id": 2,
       "name": "motaru",
       "score": 109,
       "dateTime": "2023-12-27T11:09:08.658Z"
@@ -98,21 +104,15 @@
     },
     {
       "id": 2,
-      "name": "motaru",
-      "score": 47,
-      "dateTime": "2023-12-25T17:38:07.378Z"
+      "name": "SHEYMA",
+      "score": 55,
+      "dateTime": "2023-12-27T16:10:44.253Z"
     },
     {
       "id": 2,
       "name": "motaru",
-      "score": 46,
-      "dateTime": "2023-12-25T17:46:47.288Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 46,
-      "dateTime": "2023-12-25T21:36:24.242Z"
+      "score": 50,
+      "dateTime": "2023-12-25T19:42:36.942Z"
     },
     {
       "id": 2,
@@ -207,8 +207,8 @@
     {
       "id": 2,
       "name": "motaru",
-      "score": 24,
-      "dateTime": "2023-12-25T21:35:56.710Z"
+      "score": 25,
+      "dateTime": "2023-12-27T22:16:24.679Z"
     },
     {
       "id": 2,
@@ -221,6 +221,18 @@
       "name": "motaru",
       "score": 23,
       "dateTime": "2023-12-25T23:08:01.454Z"
+    },
+    {
+      "id": 2,
+      "name": "motaru",
+      "score": 23,
+      "dateTime": "2023-12-27T15:55:48.696Z"
+    },
+    {
+      "id": 2,
+      "name": "motaru",
+      "score": 23,
+      "dateTime": "2023-12-27T20:05:34.190Z"
     },
     {
       "id": 2,
@@ -267,50 +279,8 @@
     {
       "id": 2,
       "name": "motaru",
-      "score": 15,
-      "dateTime": "2023-12-25T22:42:54.388Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 15,
-      "dateTime": "2023-12-25T23:07:27.092Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 15,
-      "dateTime": "2023-12-25T23:19:38.625Z"
-    },
-    {
-      "id": 2,
-      "name": "SARRA",
-      "score": 15,
-      "dateTime": "2023-12-26T13:00:53.747Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 14,
-      "dateTime": "2023-12-25T23:07:19.557Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 13,
-      "dateTime": "2023-12-25T17:40:27.700Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 13,
-      "dateTime": "2023-12-26T12:54:53.653Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
       "score": 12,
-      "dateTime": "2023-12-25T16:39:04.983Z"
+      "dateTime": "2023-12-27T16:09:42.949Z"
     },
     {
       "id": 2,
@@ -358,115 +328,25 @@
       "id": 2,
       "name": "motaru",
       "score": 10,
-      "dateTime": "2023-12-25T17:59:25.411Z"
+      "dateTime": "2023-12-27T16:10:01.274Z"
+    },
+    {
+      "id": 2,
+      "name": "SHEYMA",
+      "score": 10,
+      "dateTime": "2023-12-27T19:17:29.034Z"
     },
     {
       "id": 2,
       "name": "motaru",
       "score": 10,
-      "dateTime": "2023-12-25T21:26:25.829Z"
-    },
-    {
-      "id": 2,
-      "name": "ANON",
-      "score": 10,
-      "dateTime": "2023-12-25T21:27:44.573Z"
+      "dateTime": "2023-12-27T21:33:27.992Z"
     },
     {
       "id": 2,
       "name": "motaru",
       "score": 10,
-      "dateTime": "2023-12-25T21:32:25.517Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-25T21:34:39.285Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-25T21:42:46.891Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-25T22:37:31.245Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-25T22:38:48.567Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-25T22:55:53.888Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-25T23:15:22.916Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-25T23:18:04.566Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-25T23:19:26.347Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-26T12:04:56.300Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-26T12:16:07.603Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-26T12:19:57.599Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-26T12:45:09.387Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-26T12:52:07.629Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-26T12:55:52.015Z"
-    },
-    {
-      "id": 2,
-      "name": "motaru",
-      "score": 10,
-      "dateTime": "2023-12-27T11:44:41.442Z"
+      "dateTime": "2023-12-27T22:15:47.967Z"
     },
     {
       "id": 2,

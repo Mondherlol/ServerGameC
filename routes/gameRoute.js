@@ -1,30 +1,22 @@
 // routes/gameRoutes.js
 const express = require('express');
 const router = express.Router();
-const { getGamesCodes,addGame,getGames,deleteGame,generateUniqueCode} = require('../controllers/gameController');
+const {generateUniqueCode, getGames} = require('../controllers/gameController');
 
 
-
-router.get('/', (req, res) => {
-    const  games = getGames();
-    res.status(200).json(games);
-  });
-router.get('/code', (req, res) => {
-    const  gamesCodes = getGamesCodes();
-    res.status(200).json(gamesCodes);
-  });
+//generer code pour les games cette fonction est utiliser par le c lorsque il lance une jeux il lui donne un code unique 
   router.get('/generercode', (req, res) => {
     const  Code = generateUniqueCode();
     res.status(200).send(Code);
   });
-  router.post('/:code/:playerName/:playerId', (req, res) => {
-    const {code,playerName,playerId } = req.params;
-    const games = addGame(code,playerName,playerId);
-    res.status(200).json(games);
-  });
-router.delete('/:code',(req,res)=>{
-    const {code} =req.params;
-    res.status(200).json(deleteGame(code));
-})
+
+
+// Route pour récupérer la liste des parties
+router.get('/', (req, res) => {
+  const gamesList = getGames();
+  res.status(200).json(gamesList);
+});
+
+
 
 module.exports = router;
