@@ -4,6 +4,7 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 const scoreRoute = require('./routes/scoresRoute');
 const gameRoute = require('./routes/gameRoute');
+const {addEnemy}= require('./controllers/gameController');
 
 const http = require('http');
 const socketIo = require('socket.io');
@@ -48,12 +49,18 @@ io.on('connection', (socket) => {
       console.error('Erreur de connexion:', error);
     });
 
-  socket.on('join-game', (playerName) => {
+  socket.on('join-game', (playerName,gameCode) => {
     players[socket.id] = playerName;
     io.emit('player-joined', { id: socket.id, name: playerName });
 
     console.log(`${playerName} a rejoint la partie.`);
   });
+  socket.on('add-enemy',(enemyCode,gameCode,playerName,selectedSide)=>{
+    console.log('enemy ',enemyCode)
+    console.log('game code',gameCode)
+    console.log('selected side',selectedSide)
+    addEnemy(enemyCode, gameCode, playerName,selectedSide);
+  })
 
   socket.on('disconnect', () => {
     if (players[socket.id]) {

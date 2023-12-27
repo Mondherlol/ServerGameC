@@ -1,7 +1,7 @@
 // routes/gameRoutes.js
 const express = require('express');
 const router = express.Router();
-const { getGamesCodes,addGame,getGames,deleteGame,generateUniqueCode} = require('../controllers/gameController');
+const { getGamesCodes,addGame,getGames,deleteGame,generateUniqueCode,addEnemy} = require('../controllers/gameController');
 
 
 //retourner la liste des games
@@ -29,5 +29,9 @@ router.delete('/:code',(req,res)=>{
     const {code} =req.params;
     res.status(200).json(deleteGame(code));
 })
+
+//ne9sa routeur add enemy hedhy normalement lazemha teb3eth les donnees lel jeux,les donner mawjoudine fel fonction add enemy fel gameController ijib fel les donner mel socket eli mawjouda fel server
+
+
 
 module.exports = router;

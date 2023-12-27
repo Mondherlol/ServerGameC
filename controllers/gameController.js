@@ -80,8 +80,15 @@ function addVisitor(code,visitorName){
       } else {
         return `success: false, message: 'Game not found.' `
       }
-
 }
+function addEnemy(enemyCode, gameCode, playerName,selectedSide) {
+    // Mettez ici le code que vous souhaitez exécuter lorsque l'ennemi est ajouté
+    console.log('Function addEnemy called with parameters:');
+    console.log('Enemy Code:', enemyCode);
+    console.log('Game Code:', gameCode);
+    console.log('Player Name:', playerName);
+    return (enemyCode,gameCode,playerName,selectedSide)
+  }
 
 function generateUniqueCode() {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnoprstuvwxyz0123456789';
@@ -115,5 +122,6 @@ module.exports = {
     getGames,
     deleteGame,
     generateUniqueCode,
-    addVisitor
+    addVisitor,
+    addEnemy
 };
